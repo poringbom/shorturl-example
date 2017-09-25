@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -26,7 +27,8 @@ import com.bluebik.app.backend.response.UserLoginResponse;
 import com.bluebik.app.backend.service.LoginLogicService;
 import com.bluebik.app.backend.service.UriResourceService;
 
-@Controller("/api/v1")
+@Controller
+@RequestMapping("/api/v1")
 public class APIController {
 	
 	@Resource
