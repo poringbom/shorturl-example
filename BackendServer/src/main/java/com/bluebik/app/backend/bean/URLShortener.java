@@ -22,7 +22,7 @@ public class URLShortener {
 	private int keyLength; // the key length in URL defaults to 8
 
 	// Default Constructor
-	public URLShortener(int length, String domain) {
+	public URLShortener() {
 		keyMap = new HashMap<String, String>();
 		valueMap = new HashMap<String, String>();
 		myRand = new Random();
@@ -39,8 +39,18 @@ public class URLShortener {
 			}
 			myChars[i] = (char) j;
 		}
-		this.domain = sanitizeURL(domain);
+//		domain = "http://fkt.in";
+	}
+
+	// Constructor which enables you to define tiny URL key length and base URL
+	// name
+	public URLShortener(int length, String newDomain) {
+		this();
 		this.keyLength = length;
+		if (!newDomain.isEmpty()) {
+			newDomain = sanitizeURL(newDomain);
+			domain = newDomain;
+		}
 	}
 
 	// shortenURL
@@ -50,12 +60,16 @@ public class URLShortener {
 		if (validateURL(longURL)) {
 			longURL = sanitizeURL(longURL);
 			if (valueMap.containsKey(longURL)) {
-				shortURL = domain + "/" + valueMap.get(longURL);
+				shortURL = valueMap.get(longURL);
 			} else {
-				shortURL = domain + "/" + getKey(longURL);
+				shortURL =  getKey(longURL);
 			}
 		}
-		// add http part
+		
+		if(domain != null){
+			shortURL = domain + "/" + shortURL;
+		}
+		
 		return shortURL;
 	}
 
@@ -84,11 +98,11 @@ public class URLShortener {
 	String sanitizeURL(String url) {
 		if (url.substring(0, 7).equals("http://"))
 			url = url.substring(7);
-
-		if (url.substring(0, 8).equals("https://"))
+		
+		else if (url.substring(0, 8).equals("https://"))
 			url = url.substring(8);
 
-		if (url.charAt(url.length() - 1) == '/')
+		else if (url.charAt(url.length() - 1) == '/')
 			url = url.substring(0, url.length() - 1);
 		return url;
 	}

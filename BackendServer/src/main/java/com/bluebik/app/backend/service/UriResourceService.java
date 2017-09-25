@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
@@ -19,8 +18,7 @@ public class UriResourceService {
 	@Resource
 	private UriResourceJpaRepository uriResourceJpaRepository;
 	
-	@Value("${middleware.hostname}")
-	private String hostName;
+	private static URLShortener uRLShortener = new URLShortener();
 	
 	public Page<UriResource> list(Pageable page) {
 		try {
@@ -31,11 +29,13 @@ public class UriResourceService {
 		}
 	}
 	
-	public String getUriByShortUri(String shortUri) {
+	public String getUriByShortUriAndcounting(String shortUri) {
 		String result = null;
 		try {
 			UriResource uri = this.getUriResourceByShortUri(shortUri);
 			if(uri != null) {
+				uri.setCount(uri.getCount()+1);
+				uriResourceJpaRepository.save(uri);
 				result = uri.getUri();
 			}
 		} catch (Exception e) {
@@ -64,21 +64,6 @@ public class UriResourceService {
 		return uriResource;
 	}
 	
-	public Long incrementCountingByShortUri(String shortUri) {
-		Long count = null;
-		try {
-			UriResource uri = this.getUriResourceByShortUri(shortUri);
-			if(uri != null) {
-				count = uri.getCount();
-				uri.setCount(count++);
-				uriResourceJpaRepository.save(uri);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return count;
-	}
-	
 	private UriResource getUriResourceByShortUri(String shortUri) {
 		UriResource uriResource = null;
 		try {
@@ -94,10 +79,9 @@ public class UriResourceService {
 
 	
 	private String generateShortUriByUri(String uri) {
-		URLShortener u = new URLShortener(5, hostName);
 		String result = "";
 		try {
-			result = u.shortenURL(uri);
+			result = uRLShortener.shortenURL(uri);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

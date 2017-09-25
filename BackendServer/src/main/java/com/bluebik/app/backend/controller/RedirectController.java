@@ -6,6 +6,8 @@ import java.io.PrintWriter;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,12 +20,20 @@ public class RedirectController {
 	@Resource
 	private UriResourceService uriResourceService;
 	
-	@RequestMapping("/short-uri/{shortUri}")
+	@Value("${app.server.hostname}")
+	private String hostName;
+	
+	@RequestMapping(value="/{shortUri}")
 	public void redirect(@PathVariable String shortUri, HttpServletResponse response) {
+		response.setContentType(MediaType.TEXT_HTML_VALUE);
 		try {
-			String uri = uriResourceService.getUriByShortUri(shortUri);
-			if(uri != null) {
-				response.sendRedirect(uri);
+			String result = uriResourceService.getUriByShortUriAndcounting(shortUri);
+			if(result != null) {
+				response.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY);
+				if(!(result.toLowerCase().startsWith("http://") || result.toLowerCase().startsWith("https://"))){
+					result = "http://"+result;
+				}
+				response.setHeader("Location", result);
 			}else {
 				this.setRedirectError(response, shortUri);
 			}
@@ -36,9 +46,8 @@ public class RedirectController {
 	private void setRedirectError(HttpServletResponse response, String shortUri) {
 		try {
 			PrintWriter out = response.getWriter();
-			out.write(String.format("uri : %s can't found", shortUri));
-			((HttpServletResponse) response).setStatus(HttpServletResponse.SC_TEMPORARY_REDIRECT);
-			((HttpServletResponse) response).setContentType("text/html");
+			out.println(String.format("uri : %s can't found", hostName+"/"+shortUri));
+			response.setStatus(HttpServletResponse.SC_TEMPORARY_REDIRECT);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

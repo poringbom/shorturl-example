@@ -25,7 +25,7 @@ public class AuthenticationFilter implements Filter {
 	@Resource
 	private LoginLogicService loginLogicService; 
 	
-	private static HashMap<String, RequestMethod> ignoreUri;
+	private static HashMap<String, String> authenUri;
 	
 	@Override
 	public void destroy() {
@@ -36,10 +36,10 @@ public class AuthenticationFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		try {
-			String url[] = ((HttpServletRequest)request).getRequestURI().split("/");
+			String url = ((HttpServletRequest)request).getRequestURI();
 			String method = ((HttpServletRequest)request).getMethod().toString();
-			RequestMethod found = ignoreUri.get("/"+url[1]);
-			if(found == null || (!"ALL".equals(method) && !method.equals(found.toString()))) {
+			String found = authenUri.get(url);
+			if(found != null && method.equals(found)) {
 				String username = ((HttpServletRequest)request).getHeader("username");
 				String secretKey = ((HttpServletRequest)request).getHeader("secretKey");
 				if((loginLogicService.checkAccessByUsernameAndSecreKey(username, secretKey))) {
@@ -58,10 +58,8 @@ public class AuthenticationFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
-		ignoreUri = new HashMap<String, RequestMethod>();
-		ignoreUri.put("/login", RequestMethod.POST);
-		ignoreUri.put("/user", RequestMethod.POST);
-		ignoreUri.put("/short-uri", RequestMethod.valueOf("ALL"));
+		authenUri = new HashMap<String, String>();
+		authenUri.put("/uri", RequestMethod.GET.toString());
 	}
 	
 	private void setAccessDenied(ServletResponse response) throws IOException {
