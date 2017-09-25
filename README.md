@@ -1,5 +1,5 @@
 # shorturl-example
-angular2 (client) + php xammp (middleware config virtual host) + spring boot (backend)
+angular2 (client) + spring boot (backend)
 
 Spring boot Server
   - H2 database (inmemory database)
