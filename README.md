@@ -3,7 +3,7 @@ angular2 (client) + php xammp (middleware config virtual host) + spring boot (ba
 
 Spring boot Server
   - H2 database (inmemory database)
-  backend springboot API
+  - spring web API
   
      1. signup user http://localhost:8080/api/v1/user
      Request: 
