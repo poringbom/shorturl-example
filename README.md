@@ -68,7 +68,7 @@ Spring boot Server
           5. redirect http://localhost:8080/{shortUri} 
           Response: redirect to real url
        
-      
-   Angular Cli Run :
-   npm install -g @angular/cli@latest 
-   ng serve
+     
+    Angular Cli Run :
+      1. npm install -g @angular/cli@latest 
+      2. ng serve
