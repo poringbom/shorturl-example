@@ -69,4 +69,6 @@ Spring boot Server
           Response: redirect to real url
        
       
-      
+   Angular Cli Run :
+   npm install -g @angular/cli@latest 
+   ng serve
