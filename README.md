@@ -1,6 +1,7 @@
 # shorturl-example
 angular2 (client) + spring boot (backend)
 
+Folder BackendServer is a backend application\
 Spring boot Server
   - H2 database (inmemory database)
   - spring web API
@@ -70,6 +71,7 @@ Spring boot Server
        
       
     
-Angular Cli Run :
+Folder client-web is a front end application
+angular Cli Run :
   1. npm install -g @angular/cli@latest 
   2. ng serve
