@@ -1,0 +1,15 @@
+.masthead {
+    height: 100vh;  
+}
+
+.form-group-long {
+    width: 70%;
+}
+
+.form-inline-full, .form-control-full {
+    width: 100% !important;
+}
+
+.btn {
+    cursor: pointer;
+}
