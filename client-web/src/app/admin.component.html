@@ -18,7 +18,7 @@
                 <tbody>
                     <tr [hidden] = "noContent" *ngFor="let uri of uriList">
                         <td title="{{uri.uri}}">{{cutWording(uri.uri)}}</td>
-                        <td title="{{uri.shortUri}}">{{constantService.http_post_server}}/{{cutWording(uri.shortUri)}}</td>
+                        <td title="{{constantService.http_post_server+'/'+uri.shortUri}}">{{cutWording(constantService.http_post_server+'/'+uri.shortUri)}}</td>
                         <td style="text-align:center;">{{uri.count}}</td>
                     </tr>
                     <tr [hidden] = "!noContent">
