@@ -1,9 +1,31 @@
-<div class="modal-dialog custom-modal modal-xl">
+<i [hidden] = "!openProgress" class="fa fa-spinner fa-spin fa-5x fa-fw"></i>
+<div [hidden] = "openProgress" class="modal-dialog custom-modal modal-xl">
     <div class="modal-content">
         <div class="modal-header">
-            <h1 class="text-center width-full text-gray">Welcome </h1>
+            <h1 class="text-center width-full text-gray">Welcome
+                <a class="btn btn-info pull-right"><i style="color:white;" (click) = "fetchUriList()" class="fa fa-refresh fa-lg fa-fw"></i></a> 
+            </h1>
         </div>
         <div class="modal-body">
+            <table class="table" style="color:black;text-align: left;">
+                <thead>
+                    <tr>
+                        <th width="60%">URL</th>
+                        <th width="30%">short URL</th>
+                        <th width="10%">Counting</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr [hidden] = "noContent" *ngFor="let uri of uriList">
+                        <td>{{uri.uri}}</td>
+                        <td>{{uri.shortUri}}</td>
+                        <td>{{uri.count}}</td>
+                    </tr>
+                    <tr [hidden] = "!noContent">
+                        <td colspan="3">no content</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

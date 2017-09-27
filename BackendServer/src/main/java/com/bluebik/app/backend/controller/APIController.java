@@ -41,7 +41,7 @@ public class APIController {
 	
 	@GetMapping(path="uri" ,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public @ResponseBody Page<UriResource> list(
-			  @RequestParam(required=false, defaultValue="1") int page
+			  @RequestParam(required=false, defaultValue="0") int page
 			, @RequestParam(required=false, defaultValue="10") int size) {
 		Pageable pageable = new PageRequest(page, size);
 		Page<UriResource> uris = uriResourceService.list(pageable);
