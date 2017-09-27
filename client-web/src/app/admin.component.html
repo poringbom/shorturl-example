@@ -19,7 +19,7 @@
                     <tr [hidden] = "noContent" *ngFor="let uri of uriList">
                         <td title="{{uri.uri}}">{{cutWording(uri.uri)}}</td>
                         <td title="{{uri.shortUri}}">{{cutWording(uri.shortUri)}}</td>
-                        <td>{{uri.count}}</td>
+                        <td style="text-align:center;">{{uri.count}}</td>
                     </tr>
                     <tr [hidden] = "!noContent">
                         <td colspan="3">no content</td>

@@ -10,14 +10,14 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink] = "['/']">Short URL</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [hidden] = "isLogin()" [routerLink] = "['/login']">Login</a>
+        <li class="nav-item" >
+          <a [ngClass] = "{'active' : router.url == '/login' }" class="nav-link" [hidden] = "isLogin()" [routerLink] = "['/login']">Login</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [hidden] = "isLogin()" [routerLink] = "['/sign-up']">Sign up</a>
+        <li class="nav-item" >
+          <a [ngClass] = "{'active' : router.url == '/sign-up' }" class="nav-link" [hidden] = "isLogin()" [routerLink] = "['/sign-up']">Sign up</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [hidden] = "!isLogin()" [routerLink] = "['/admin']">Static URL</a>
+        <li class="nav-item" >
+          <a [ngClass] = "{'active' : router.url == '/admin' }" class="nav-link" [hidden] = "!isLogin()" [routerLink] = "['/admin']">Static URL</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [hidden] = "!isLogin()" (click) = "logout()">Logout</a>
@@ -26,7 +26,6 @@
     </div>
   </div>
 </nav>
-
 <header class="masthead">
   <div class="container">
     <div class="intro-text">
