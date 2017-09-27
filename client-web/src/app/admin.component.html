@@ -1,5 +1,5 @@
 <i [hidden] = "!openProgress" class="fa fa-spinner fa-spin fa-5x fa-fw"></i>
-<div [hidden] = "openProgress" class="modal-dialog custom-modal modal-xl">
+<div [hidden] = "openProgress" class="modal-dialog custom-modal modal-xl" style="color: black;">
     <div class="modal-content">
         <div class="modal-header">
             <h1 class="text-center width-full text-gray">Welcome
@@ -7,7 +7,7 @@
             </h1>
         </div>
         <div class="modal-body">
-            <table class="table" style="color:black;text-align: left;">
+            <table class="table" style="text-align: left;">
                 <thead>
                     <tr>
                         <th width="60%">URL</th>
@@ -26,6 +26,18 @@
                     </tr>
                 </tbody>
             </table>
+            <nav [hidden] = "noContent || openProgress || total == 1">
+                <div>
+                    <ul class="pagination pull-right">
+                        <li [hidden] = "!firstPage" class="page-item"><a class="page-link" (click)="pagePrevious()">Previous</a></li>
+                        <li [ngClass] = "{'active' : i == page }" class="page-item" *ngFor="let p of paging; let i = index;">
+                            <a class="page-link"(click)="pageGoto(i)" >{{i+1}}</a>
+                        </li>
+                        <li [hidden] = "!lastPage" class="page-item"><a class="page-link" (click)="pageNext()">Next</a></li>
+                    </ul>
+                </div>
+                <br/> <br/>
+            </nav>
         </div>
     </div>
 </div>

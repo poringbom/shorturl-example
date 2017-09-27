@@ -14,6 +14,12 @@ export class AdminComponent {
   private openProgress:boolean = false;
   private uriList:any = [];
   private noContent:boolean = true;
+  private page:number = 0;
+  private size:number = 10;
+  private total:number = 0;
+  private paging:any = [];
+  private firstPage:boolean = true;
+  private lastPage:boolean = false;
 
   constructor(private router:Router
     , private sharedVariableService:SharedVariableService
@@ -34,17 +40,37 @@ export class AdminComponent {
     return text;
   }
 
+  pageNext(): void {
+    this.page++;
+    this.fetchUriList();
+  }
+
+  pagePrevious(): void {
+    this.page++;
+    this.fetchUriList();
+  }
+
+  pageGoto(page): void {
+    this.page = page;
+    this.fetchUriList();
+  }
+
   fetchUriList(): void {
     this.openProgress = true;
     let params: URLSearchParams = new URLSearchParams();
-    //TODO paging
-    params.set('page', '0');
-    params.set('size', '999999');
+    params.set('page', String(this.page));
+    params.set('size', String(this.size));
     this.uriService.getUriListObservable(params).subscribe( response => {
       this.openProgress = false;
       if(response.content && response.content.length > 0){
         this.noContent = false;
         this.uriList = response.content
+        this.total = response.totalPages;
+        for(let i=0;i<this.total;i++){
+          this.paging.push(i);
+        }
+        this.firstPage = response.first;
+        this.lastPage = response.last;
       }
     }, error => {
       this.openProgress = false;
