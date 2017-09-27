@@ -14,7 +14,7 @@ export class GenerateComponent {
   private shortUri:string;
   private openProgress:boolean = false;
 
-  url_parttern = /^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/;
+  url_parttern = /^(http[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/;
 
   constructor(private uriService:UriService, private constantService:ConstantService) { 
     

@@ -27,6 +27,13 @@ export class AdminComponent {
     }
   }
 
+  cutWording(text): string {
+    if(text && text.length > 50) {
+      text = text.substr(0,50)+'...';
+    }
+    return text;
+  }
+
   fetchUriList(): void {
     this.openProgress = true;
     let params: URLSearchParams = new URLSearchParams();

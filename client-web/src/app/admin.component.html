@@ -17,8 +17,8 @@
                 </thead>
                 <tbody>
                     <tr [hidden] = "noContent" *ngFor="let uri of uriList">
-                        <td>{{uri.uri}}</td>
-                        <td>{{uri.shortUri}}</td>
+                        <td title="{{uri.uri}}">{{cutWording(uri.uri)}}</td>
+                        <td title="{{uri.shortUri}}">{{cutWording(uri.shortUri)}}</td>
                         <td>{{uri.count}}</td>
                     </tr>
                     <tr [hidden] = "!noContent">
