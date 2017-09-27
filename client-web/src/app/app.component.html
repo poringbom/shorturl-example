@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" [routerLink] = "['/']">Short URL</a>
+          <a [ngClass] = "{'active' : router.url == '/' }" class="nav-link" [routerLink] = "['/']">Short URL</a>
         </li>
         <li class="nav-item" >
           <a [ngClass] = "{'active' : router.url == '/login' }" class="nav-link" [hidden] = "isLogin()" [routerLink] = "['/login']">Login</a>
