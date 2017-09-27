@@ -6,10 +6,31 @@
     width: 70%;
 }
 
-.form-inline-full, .form-control-full {
+.width-full {
     width: 100% !important;
 }
 
-.btn, .nav-link{
+.btn, .nav-link {
     cursor: pointer;
+}
+
+.btn:disabled {
+    cursor:not-allowed;
+}
+
+.text-gray {
+    color: #756f6f !important;
+}
+
+.custom-modal {
+    margin-top: -20px !important;
+    margin-bottom: 0px !important;
+}
+
+
+@media (min-width: 768px) {
+    .modal-xl {
+        width: 90% !important;
+        max-width:1200px !important;
+    }
 }

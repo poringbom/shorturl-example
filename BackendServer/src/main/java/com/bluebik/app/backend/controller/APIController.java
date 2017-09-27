@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +29,7 @@ import com.bluebik.app.backend.service.LoginLogicService;
 import com.bluebik.app.backend.service.UriResourceService;
 
 @Controller
+@CrossOrigin
 @RequestMapping("/api/v1")
 public class APIController {
 	
