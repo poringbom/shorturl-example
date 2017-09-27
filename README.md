@@ -1,7 +1,7 @@
 # shorturl-example
 angular2 (client) + spring boot (backend)
 
-Folder BackendServer is a backend application
+Folder BackendServer is a backend application<br/>
 Spring boot Server Run by maven: 
 
    mvn package && java -jar target/gs-spring-boot-0.1.0.jar
