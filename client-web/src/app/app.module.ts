@@ -10,7 +10,7 @@ import { SignUpComponent } from './sign-up.component';
 import { LoginComponent } from './login.component';
 import { AdminComponent } from './admin.component';
 
-import { UserService, ConstantService, SharedVariableService } from './app.service';
+import { UserService, ConstantService, SharedVariableService, UriService } from './app.service';
 
 const appRoutes: Routes = [
   { path: '', component: GenerateComponent },
@@ -36,7 +36,8 @@ const appRoutes: Routes = [
   providers: [
     UserService, 
     ConstantService,
-    SharedVariableService
+    SharedVariableService,
+    UriService
   ],
   bootstrap: [AppComponent]
 })

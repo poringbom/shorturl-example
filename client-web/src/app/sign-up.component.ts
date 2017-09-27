@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component } from '@angular/core';
 import { UserService, ConstantService } from './app.service';
 import { Router } from '@angular/router';
 
@@ -35,7 +34,7 @@ export class SignUpComponent {
           'Some have a problem',
           response.message,
           'error'
-        )
+        );
         this.username = null;
         this.password = null;
       }
@@ -44,7 +43,7 @@ export class SignUpComponent {
         'Some have a problem',
         error,
         'error'
-      )
+      );
       this.username = null;
       this.password = null;
     });

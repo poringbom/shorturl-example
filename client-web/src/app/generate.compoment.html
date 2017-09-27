@@ -5,11 +5,26 @@
   <form class="form-inline width-full col-md-10">
       <div class="form-group form-group-long">
         <input class="form-control width-full" 
+          [(ngModel)]="uri"
           name="uri"
           type="text" 
-          placeholder="Your URL Address" 
-          oninvalid="this.setCustomValidity('Please Enter your URL')" required/>
+          placeholder="Your URL Address" />
       </div>
-      <button class="btn btn-md btn-danger">Create</button>
+      <button type="button" [disabled] = "invaliURL()" (click) = "generate()" class="btn btn-md btn-danger">Create</button>
   </form>
 </div>
+<br/>
+
+<div [hidden] = "!shortUri" class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <div class="alert alert-info">
+      <div>
+        <a href="{{shortUri}}" target="_blank" style="color:black;"><strong><u>{{shortUri}}</u> </strong></a>
+        <button class="btn btn-info btn-sm btn-margin" type="button" (click) = "copy()" ><i class="fa fa-copy"></i>&nbsp;Copy</button>
+        <a (click) = "dismiss()" style="cursor: pointer;"><i style="padding-top: 7px;" class="fa fa-times pull-right fa-lg"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+<i [hidden] = "!openProgress" class="fa fa-spinner fa-spin fa-5x fa-fw"></i>

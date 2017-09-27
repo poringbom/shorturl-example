@@ -85,6 +85,7 @@ export class UserService extends AbstarctService {
 
 }
 
+@Injectable()
 export class UriService extends AbstarctService {
     
     private api_url:string;

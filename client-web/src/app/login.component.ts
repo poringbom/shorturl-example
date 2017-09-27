@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component } from '@angular/core';
 import { UserService, ConstantService, SharedVariableService } from './app.service';
 import { Router } from '@angular/router';
 
