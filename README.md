@@ -9,6 +9,10 @@ Spring boot Server Run by maven: <br/>
  3. mvn spring-boot:run
 
   - H2 database (inmemory database) http://localhost:8080/h2 for view db
+      <br/>url=jdbc:h2:file:~/database
+      <br/>username=sa
+      <br/>password=
+
   - spring web API
   
      1. signup user http://localhost:8080/api/v1/user
