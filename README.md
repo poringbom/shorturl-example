@@ -4,6 +4,7 @@ angular2 (client) + spring boot (backend)
 Folder BackendServer is a backend application<br/>
 
 Spring boot Server Run by maven: <br/>
+(if dont't have maven you can install maven from npm : npm install mvn -g)<br/>
  1. cd {directory}/BackendServer
  2. mvn clean install
  3. mvn spring-boot:run
