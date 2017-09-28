@@ -74,7 +74,7 @@ Spring boot Server Run by maven: <br/>
        
       
     
-Folder client-web is a front end application<br/>
+Folder client-web is a front end application (http://localhost:4200/)<br/>
 angular Cli Run by node :
   1. npm install -g @angular/cli@latest 
   3. npm install
