@@ -4,7 +4,9 @@ angular2 (client) + spring boot (backend)
 Folder BackendServer is a backend application<br/>
 
 Spring boot Server Run by maven: <br/>
- 1. mvn package && java -jar target/gs-spring-boot-0.1.0.jar
+ 1. cd {directory}/BackendServer
+ 2. mvn clean install
+ 3. mvn package && java -jar target/backend-shorturl-0.1.0.jar
 
   - H2 database (inmemory database) http://localhost:8080/h2 for view db
   - spring web API
@@ -76,6 +78,7 @@ Spring boot Server Run by maven: <br/>
     
 Folder client-web is a front end application (http://localhost:4200/)<br/>
 angular Cli Run by node :
-  1. npm install -g @angular/cli@latest 
+  1. cd {directory}/client-web
+  2. npm install -g @angular/cli@latest 
   3. npm install
-  2. ng serve
+  4. ng serve
