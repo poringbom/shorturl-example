@@ -9,13 +9,13 @@ import javax.persistence.Id;
 public class UriResource {
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	
 	private Long count;
-	
+
 	private String uri;
-	
+
 	private String shortUri;
 
 	public Long getId() {
