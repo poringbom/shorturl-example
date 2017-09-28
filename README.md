@@ -6,7 +6,7 @@ Folder BackendServer is a backend application<br/>
 Spring boot Server Run by maven: <br/>
  1. mvn package && java -jar target/gs-spring-boot-0.1.0.jar
 
-  - H2 database (inmemory database)
+  - H2 database (inmemory database) http://localhost:8080/h2 for view db
   - spring web API
   
      1. signup user http://localhost:8080/api/v1/user
